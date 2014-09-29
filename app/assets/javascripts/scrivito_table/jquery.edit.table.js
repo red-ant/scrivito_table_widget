@@ -41,7 +41,7 @@
   };
 
   $.fn.edittable.initialize = function(element) {
-    if(element.html() === "") {
+    if(element.prop("tagName") == "DIV" && element.html() === "") {
       $.fn.edittable.createNewTable(element);
     }
     initialized = true;
