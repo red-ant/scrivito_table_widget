@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
     "{app,lib,cms}/**/*",
     "LICENSE",
     "Rakefile",
-    "README.rdoc"
+    "README.md"
   ]
 
   gem.add_dependency 'bundler'
