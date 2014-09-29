@@ -20,13 +20,17 @@
     // Set click event
     scrivito.on('load', function() {
       return $('body').on('click', tableEditor.selector, function(event) {
-        tableEditor.clickFunction($(event.target));
+        if(scrivito.in_editable_view()) {
+          tableEditor.clickFunction($(event.target));
+        };
       });
     });
 
     scrivito.on('load', function() {
       return $('body').on('blur', tableEditor.selector, function(event) {
-        tableEditor.blurFunction($(event.target));
+        if(scrivito.in_editable_view()) {
+          tableEditor.blurFunction($(event.target));
+        };
       });
     });
   });

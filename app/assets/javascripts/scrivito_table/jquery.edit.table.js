@@ -27,7 +27,6 @@
     activeElement = this.prop("tagName") == "DIV" ? this.find("td, th").first() : this;
     activeElement.attr("contenteditable", true);
 
-
     rows = $.fn.edittable.getRowCount();
     cols = $.fn.edittable.getColCount();
   };
