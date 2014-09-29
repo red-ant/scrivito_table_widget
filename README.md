@@ -2,7 +2,7 @@ scrivito_accordion
 =====================
 
 [![Gem Version](https://badge.fury.io/rb/scrivito_table.svg)](http://badge.fury.io/rb/scrivito_table)
-[![Code Climate](https://codeclimate.com/github/infopark/scrivito_table/badges/gpa.svg)](https://codeclimate.com/github/infopark/scrivito_table)
+[![Code Climate](https://codeclimate.com/github/gertimon/scrivito_table/badges/gpa.svg)](https://codeclimate.com/github/gertimon/scrivito_table)
 
 A Widget for Scrivito for a table. It is using Bootstrap 3.
 
