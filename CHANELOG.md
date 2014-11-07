@@ -1,5 +1,9 @@
 # Changelog: Scrivito CRM Event
 
+## 0.1.0
+
+* Rename to new naming convention
+
 ## 0.0.1
 
 * Initial Widget
