@@ -19,9 +19,9 @@ Add this line to your editing javascript manifest:
 After that, execute:
 
     $ bundle
-    $ rake cms:migrate:install
-    $ rake cms:migrate
-    $ rake cms:migrate:publish
+    $ rake scrivito:migrate:install
+    $ rake scrivito:migrate
+    $ rake scrivito:migrate:publish
 
 ## Changelog
 See [Changelog](https://github.com/Scrivito/scrivito_table_widget/blob/master/CHANGELOG.md) for more
