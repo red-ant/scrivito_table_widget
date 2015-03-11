@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    scrivito_table_widget (0.5.0)
+    scrivito_table_widget (0.5.1)
       bundler
       scrivito
 

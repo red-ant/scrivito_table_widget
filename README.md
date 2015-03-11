@@ -14,7 +14,11 @@ Add this line to your application's `Gemfile`:
 
 Add this line to your editing javascript manifest:
 
-    /= require scrivito_table_widget/editing
+    /= require scrivito_table_widget/scripts
+
+Add this line to your application stylesheet manifest:
+
+    /= require scrivito_table_widget/styles
 
 After that, execute:
 
