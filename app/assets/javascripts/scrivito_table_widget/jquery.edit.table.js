@@ -92,6 +92,7 @@
       initialized = false;
       cmsField = null;
       $('.edit-table').remove();
+      $('.helper-line').remove();
       rows = 0;
       cols = 0;
       return {text: text, cmsField: field};
@@ -113,11 +114,11 @@
   }
 
   $.fn.edittable.buttonsEdit = function() {
-    return  $.fn.edittable.button("", "B", "table-bold") +
-            $.fn.edittable.button("", "I", "table-italic") +
-            $.fn.edittable.button("", "L", "table-left") +
-            $.fn.edittable.button("", "C", "table-center") +
-            $.fn.edittable.button("", "R", "table-right");
+    return  $.fn.edittable.button("bold", "", "table-bold") +
+            $.fn.edittable.button("italic", "", "table-italic") +
+            $.fn.edittable.button("align-left", "", "table-left") +
+            $.fn.edittable.button("align-center", "", "table-center") +
+            $.fn.edittable.button("align-right", "", "table-right");
   }
 
   $.fn.edittable.buttonsBottom = function() {
@@ -134,7 +135,8 @@
   }
 
   $.fn.edittable.buttonsMain = function() {
-    return  $.fn.edittable.button("none", "striped", "stripe-table alert-gray") +
+    return  $.fn.edittable.button("pencil", "", "edit-the-table alert-gray") +
+            $.fn.edittable.button("none", "striped", "stripe-table alert-gray") +
             $.fn.edittable.button("none", "condenced", "condence-table alert-gray") +
             $.fn.edittable.button("none", "hover", "hover-table alert-gray") +
             $.fn.edittable.button("none", "border", "border-table alert-gray") +
@@ -176,6 +178,8 @@
     $('.table-widget').find('.table-left').on('click', function() { $.fn.edittable.tableLeft(); });
     $('.table-widget').find('.table-center').on('click', function() { $.fn.edittable.tableCenter(); });
     $('.table-widget').find('.table-right').on('click', function() { $.fn.edittable.tableRight(); });
+
+    $('.table-widget').find('.edit-the-table').on('click', function() { $.fn.edittable.toggleTableOptions(); });
 
     $('.table-widget').find('.add-left, .add-right').on('mouseover', function() { $.fn.edittable.addHoverVerticalAdd($(this)); });
     $('.table-widget').find('.add-top, .add-bottom').on('mouseover', function() { $.fn.edittable.addHoverHorizontalAdd($(this)); });
@@ -244,6 +248,10 @@
   /****
    * Button methods
    ****/
+
+   $.fn.edittable.toggleTableOptions = function() {
+    $('.table-options.main div').not(':first').fadeToggle(100);
+   }
 
   $.fn.edittable.bold = function() {
     activeElement.toggleClass('bold');

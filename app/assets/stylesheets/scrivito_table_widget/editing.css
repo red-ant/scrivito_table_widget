@@ -117,3 +117,11 @@ tr.delete-marker {
 td.active-field {
   outline: 2px solid #444;
 }
+
+.table-options.main div {
+  display: none;
+}
+
+.table-options.main div:first-child {
+  display: block;
+}
