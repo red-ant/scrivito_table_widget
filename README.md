@@ -11,6 +11,7 @@ A Widget for Scrivito for a table. It is using Bootstrap 3.
 Add this line to your application's `Gemfile`:
 
     gem 'scrivito_table_widget'
+    gem 'font-awesome-rails'
 
 Add this line to your editing javascript manifest:
 
@@ -18,7 +19,7 @@ Add this line to your editing javascript manifest:
 
 Add this line to your application stylesheet manifest:
 
-    /= require scrivito_table_widget/styles
+    *= require scrivito_table_widget/styles
 
 After that, execute:
 

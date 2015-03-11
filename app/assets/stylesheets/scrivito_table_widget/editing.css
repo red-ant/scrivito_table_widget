@@ -24,7 +24,16 @@
   margin-bottom: 0;
 }
 
-.table-buttons div {
+.table-buttons.edit {
+  width: 245px;
+}
+
+.table-options.main {
+  width: 333px;
+}
+
+.table-buttons.edit div.alert-gray,
+.table-options div {
   background: #444444;
 }
 
@@ -91,10 +100,6 @@
   position: relative;
 }
 
-.alert-gray {
-  background-color: #444444;
-}
-
 .table-options .alert-success {
   margin-left: 5px;
 }
@@ -118,10 +123,12 @@ td.active-field {
   outline: 2px solid #444;
 }
 
-.table-options.main div {
+.table-options.main div,
+.table-buttons.edit div {
   display: none;
 }
 
-.table-options.main div:first-child {
+.table-options.main div:first-child,
+.table-buttons.edit div:first-child {
   display: block;
 }

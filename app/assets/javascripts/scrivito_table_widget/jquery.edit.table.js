@@ -59,7 +59,7 @@
     var height = activeElement.outerHeight();
 
     $('.table-buttons.top').css({    top: "-11px",                        left: (base.left - 11), width: width + 23});
-    $('.table-buttons.edit').css({   top: (base.top - 16),                left: (base.left + 5)});
+    $('.table-buttons.edit').css({   top: (base.top - 12),                left: (base.left - 5)});
     $('.table-buttons.left').css({   top: (base.top - 12),                left: -17, height: height + 24});
     $('.table-buttons.bottom').css({ bottom: "-4px",                      left: (base.left + width/2 - 12)});
     $('.table-buttons.right').css({  top: (base.top + height/2 - 11),      right: -23});
@@ -114,11 +114,16 @@
   }
 
   $.fn.edittable.buttonsEdit = function() {
-    return  $.fn.edittable.button("bold", "", "table-bold") +
-            $.fn.edittable.button("italic", "", "table-italic") +
-            $.fn.edittable.button("align-left", "", "table-left") +
-            $.fn.edittable.button("align-center", "", "table-center") +
-            $.fn.edittable.button("align-right", "", "table-right");
+    return  $.fn.edittable.button("pencil", "", "edit-the-cell alert-gray") +
+            $.fn.edittable.button("bold", "", "table-bold alert-gray") +
+            $.fn.edittable.button("italic", "", "table-italic alert-gray") +
+            $.fn.edittable.button("align-left", "", "table-left alert-gray") +
+            $.fn.edittable.button("align-center", "", "table-center alert-gray") +
+            $.fn.edittable.button("align-right", "", "table-right alert-gray") +
+            $.fn.edittable.button("crosshairs", "", "add-success alert-success") +
+            $.fn.edittable.button("crosshairs", "", "add-info alert-info") +
+            $.fn.edittable.button("crosshairs", "", "add-warning alert-warning") +
+            $.fn.edittable.button("crosshairs", "", "add-danger alert-danger");
   }
 
   $.fn.edittable.buttonsBottom = function() {
@@ -135,16 +140,12 @@
   }
 
   $.fn.edittable.buttonsMain = function() {
-    return  $.fn.edittable.button("pencil", "", "edit-the-table alert-gray") +
-            $.fn.edittable.button("none", "striped", "stripe-table alert-gray") +
-            $.fn.edittable.button("none", "condenced", "condence-table alert-gray") +
-            $.fn.edittable.button("none", "hover", "hover-table alert-gray") +
-            $.fn.edittable.button("none", "border", "border-table alert-gray") +
-            $.fn.edittable.button("none", "first-column", "first-column alert-gray") +
-            $.fn.edittable.button("none", "success", "add-success alert-success") +
-            $.fn.edittable.button("none", "info", "add-info alert-info") +
-            $.fn.edittable.button("none", "warning", "add-warning alert-warning") +
-            $.fn.edittable.button("none", "danger", "add-danger alert-danger");
+    return  $.fn.edittable.button("cog", "", "edit-the-table") +
+            $.fn.edittable.button("none", "striped", "stripe-table") +
+            $.fn.edittable.button("none", "condenced", "condence-table") +
+            $.fn.edittable.button("none", "hover", "hover-table") +
+            $.fn.edittable.button("none", "border", "border-table") +
+            $.fn.edittable.button("none", "first-column", "first-column");
   }
 
   $.fn.edittable.button = function(icon, text, f) {
@@ -179,7 +180,8 @@
     $('.table-widget').find('.table-center').on('click', function() { $.fn.edittable.tableCenter(); });
     $('.table-widget').find('.table-right').on('click', function() { $.fn.edittable.tableRight(); });
 
-    $('.table-widget').find('.edit-the-table').on('click', function() { $.fn.edittable.toggleTableOptions(); });
+    $('.table-widget').find('.edit-the-table').on('click', function() { $.fn.edittable.toggleTableOptions('.table-options.main'); });
+    $('.table-widget').find('.edit-the-cell').on('click', function() { $.fn.edittable.toggleTableOptions('.table-buttons.edit'); });
 
     $('.table-widget').find('.add-left, .add-right').on('mouseover', function() { $.fn.edittable.addHoverVerticalAdd($(this)); });
     $('.table-widget').find('.add-top, .add-bottom').on('mouseover', function() { $.fn.edittable.addHoverHorizontalAdd($(this)); });
@@ -249,8 +251,8 @@
    * Button methods
    ****/
 
-   $.fn.edittable.toggleTableOptions = function() {
-    $('.table-options.main div').not(':first').fadeToggle(100);
+   $.fn.edittable.toggleTableOptions = function(bar) {
+    $(bar +' div').not(':first').fadeToggle(100);
    }
 
   $.fn.edittable.bold = function() {
