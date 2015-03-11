@@ -64,6 +64,8 @@
     $('.table-buttons.bottom').css({ bottom: "-4px",                      left: (base.left + width/2 - 12)});
     $('.table-buttons.right').css({  top: (base.top + height/2 - 11),      right: -23});
 
+    $.fn.edittable.toggleTableOptions('.table-buttons.edit', 'hide');
+
     if(activeElement.get(0).tagName == "TH") {
       $('.table-buttons .add-top').hide();
     } else {
@@ -251,8 +253,12 @@
    * Button methods
    ****/
 
-   $.fn.edittable.toggleTableOptions = function(bar) {
-    $(bar +' div').not(':first').fadeToggle(100);
+   $.fn.edittable.toggleTableOptions = function(bar, option) {
+    if(option === 'hide') {
+      $(bar +' div').not(':first').hide();
+    } else {
+      $(bar +' div').not(':first').fadeToggle(100);
+    }
    }
 
   $.fn.edittable.bold = function() {
