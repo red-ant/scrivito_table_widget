@@ -6,7 +6,6 @@ class CreateTableWidget < ::Scrivito::Migration
       is_binary: false,
       title: 'TableWidget',
       attributes: [
-        {name: "style", type: "enum", values: ["table","table-striped","table-bordered","table-hover","table-condensed"]},
         {name: "table", type: "html"}
       ],
     )
