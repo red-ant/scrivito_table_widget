@@ -10,5 +10,4 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require table_widget/jquery.edit.table
-//= require table_widget/tableEditor
+//= require_tree ./ 

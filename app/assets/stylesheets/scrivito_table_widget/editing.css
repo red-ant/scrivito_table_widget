@@ -1,0 +1,119 @@
+.table-buttons {
+  position: absolute;
+  margin: 0;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.table-buttons div,
+.table-options div {
+  float: left;
+  min-width: 22px;
+  height: 22px;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 1px;
+  margin-bottom: 1px;
+  padding: 4px 6px;
+}
+
+.table-options div {
+  margin-bottom: 0;
+}
+
+.table-buttons div {
+  background: #444444;
+}
+
+.table-buttons div.table-bold {
+  font-weight: bold;
+}
+
+.table-buttons div.table-italic {
+  font-style: italic;
+}
+
+.table-buttons div.delete-row,
+.table-buttons div.delete-column {
+  background-color: #c5463f;
+}
+
+.table-buttons div.add-top,
+.table-buttons div.add-bottom,
+.table-buttons div.add-left,
+.table-buttons div.add-right {
+  background-color: #439439;
+}
+
+.table-options {
+  position: absolute;
+  top: -32px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.table-buttons.left div {
+  float: none;
+}
+
+.table-buttons.top {
+  height: 25px;
+}
+
+.table-buttons.top .add-left {
+  position: absolute;
+  left: 0;
+}
+
+.table-buttons.top .add-right {
+  position: absolute;
+  right: 0;
+}
+
+.table-buttons.left {
+  width: 25px;
+}
+
+.table-buttons.left .add-top {
+  position: absolute;
+  top: 0;
+}
+
+.table-buttons.left .add-bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.table-widget {
+  position: relative;
+}
+
+.alert-gray {
+  background-color: #444444;
+}
+
+.table-options .alert-success {
+  margin-left: 5px;
+}
+
+.helper-line {
+  position: absolute;
+  display: none;
+}
+
+.delete-marker td,
+.delete-marker th,
+th.delete-marker,
+td.delete-marker,
+tr.delete-marker {
+  background-color: #c5463f !important;
+  color: white !important;
+  border-color: #A33C36 !important;
+}
+
+td.active-field {
+  outline: 2px solid #444;
+}

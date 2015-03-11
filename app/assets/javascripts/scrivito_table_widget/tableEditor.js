@@ -12,22 +12,23 @@
       },
 
       blurFunction: function(cmsField) {
-        var text = $.fn.edittable.table(cmsField);
-        return cmsField.parents(tableEditor.selector).scrivito('save', text);
+        var response = $.fn.edittable.clear();
+        if(response != undefined) return $(response.cmsField).scrivito('save', response.text);
       }
     };
 
     // Set click event
     scrivito.on('load', function() {
-      return $('body').on('click', tableEditor.selector, function(event) {
+      return $('body').on('click', '.table-widget', function(event) {
         if(scrivito.in_editable_view()) {
           tableEditor.clickFunction($(event.target));
         };
+        event.stopPropagation();
       });
     });
 
     scrivito.on('load', function() {
-      return $('body').on('blur', tableEditor.selector, function(event) {
+      return $('body').on('click', function(event) {
         if(scrivito.in_editable_view()) {
           tableEditor.blurFunction($(event.target));
         };
