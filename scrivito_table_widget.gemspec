@@ -24,6 +24,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'bundler'
   gem.add_dependency 'scrivito'
+  gem.add_dependency 'font-awesome-rails'
 
   gem.add_development_dependency 'rake'
 end

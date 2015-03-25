@@ -1,4 +1,4 @@
-scrivito_accordion
+scrivito_table_widget
 =====================
 
 [![Gem Version](https://badge.fury.io/rb/scrivito_table_widget.svg)](http://badge.fury.io/rb/scrivito_table_widget)
@@ -11,15 +11,14 @@ A Widget for Scrivito for a table. It is using Bootstrap 3.
 Add this line to your application's `Gemfile`:
 
     gem 'scrivito_table_widget'
-    gem 'font-awesome-rails'
 
 Add this line to your editing javascript manifest:
 
-    /= require scrivito_table_widget/scripts
+    /= require scrivito_table_widget
 
 Add this line to your application stylesheet manifest:
 
-    *= require scrivito_table_widget/styles
+    *= require scrivito_table_widget
 
 After that, execute:
 
