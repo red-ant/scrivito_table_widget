@@ -1,5 +1,5 @@
 <% if widget.table.blank? %>
-  <%= scrivito_tag(:div, widget, :table) do %>
+  <%= scrivito_tag(:div, widget, :table, data: {editor: 'create-new-table'}) do %>
     <div class="create-new-table">
       <div class="alert alert-info">
         There is no table present. Click this message to insert a new one.
