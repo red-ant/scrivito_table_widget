@@ -20,13 +20,6 @@ Add this line to your application stylesheet manifest:
 
     *= require scrivito_table_widget
 
-After that, execute:
-
-    $ bundle
-    $ rake scrivito:migrate:install
-    $ rake scrivito:migrate
-    $ rake scrivito:migrate:publish
-
 ## Changelog
 See [Changelog](https://github.com/Scrivito/scrivito_table_widget/blob/master/CHANGELOG.md) for more
 details.
