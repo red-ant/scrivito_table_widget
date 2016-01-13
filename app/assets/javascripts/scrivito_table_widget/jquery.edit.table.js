@@ -19,8 +19,6 @@
       rows = $.fn.edittable.getRowCount();
       cols = $.fn.edittable.getColCount();
       $.fn.edittable.bindButtons();
-    } else if(activeElement.get(0) != this.get(0)) {
-      //$.fn.edittable.save(cmsField);
     }
 
     if(!keysBound) {
@@ -73,7 +71,7 @@
     }
   }
 
-  $.fn.edittable.initialize = function(cmsField, element) {    
+  $.fn.edittable.initialize = function(cmsField, element) {
     var buttons_top = "<div class='table-buttons top'>"+ $.fn.edittable.buttonsTop() +"</div>";
     var buttons_bottom = "<div class='table-buttons bottom'>"+ $.fn.edittable.buttonsBottom() +"</div>";
     var buttons_left = "<div class='table-buttons left'>"+ $.fn.edittable.buttonsLeft() +"</div>";

@@ -5,7 +5,7 @@
     App.tableEditor = {
       // set selector for Editor
       selector: '[data-editor=table-editor]',
-            
+
       // set function triggert on click
       clickFunction: function(cmsField) {
         cmsField.edittable();

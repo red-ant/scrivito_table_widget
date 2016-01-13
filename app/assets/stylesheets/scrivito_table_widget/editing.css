@@ -132,3 +132,8 @@ td.active-field {
 .table-buttons.edit div:first-child {
   display: block;
 }
+
+[data-scrivito-display-mode='editing'] table td:focus,
+[data-scrivito-display-mode='editing'] table th:focus {
+  outline: 2px dotted #439439 !important;
+}
