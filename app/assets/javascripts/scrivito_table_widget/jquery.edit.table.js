@@ -269,7 +269,7 @@
     $(newRow).insertBefore( activeElement.parents('tr') );
     rows += 1;
     $.fn.edittable.setButtonPositions();
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   }
 
   $.fn.edittable.addBottom = function() {
@@ -278,7 +278,7 @@
     $(newRow).insertAfter( activeElement.parents('tr') );
     rows += 1;
     $.fn.edittable.setButtonPositions();
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   }
 
   $.fn.edittable.addLeft = function() {
@@ -294,7 +294,7 @@
 
     cols += 1;
     $.fn.edittable.setButtonPositions();
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.addRight = function() {
@@ -310,7 +310,7 @@
 
     cols += 1;
     $.fn.edittable.setButtonPositions();
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.removeColumn = function() {
@@ -330,7 +330,7 @@
 
 
     $.fn.edittable.setButtonPositions();
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.removeRow = function() {
@@ -343,33 +343,33 @@
       $(activeTable.find('tbody tr')[activeRowIndex]).find('td').click();
     }
     $.fn.edittable.setButtonPositions();
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.tableStriped = function() {
     activeTable.toggleClass('table-striped');
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.tableCondensed = function() {
     activeTable.toggleClass('table-condensed');
     $.fn.edittable.setButtonPositions();
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.tableHover = function() {
     activeTable.toggleClass('table-hover');
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.tableBorder = function() {
     activeTable.toggleClass('table-bordered');
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.firstColumn = function() {
     activeTable.toggleClass('column-first');
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.addSuccess = function() {
@@ -377,7 +377,7 @@
     activeElement.removeClass('warning');
     activeElement.removeClass('danger');
     activeElement.toggleClass('success');
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.addInfo = function() {
@@ -385,7 +385,7 @@
     activeElement.removeClass('warning');
     activeElement.removeClass('danger');
     activeElement.toggleClass('info');
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.addWarning = function() {
@@ -393,7 +393,7 @@
     activeElement.removeClass('success');
     activeElement.removeClass('danger');
     activeElement.toggleClass('warning');
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.addDanger = function() {
@@ -401,28 +401,28 @@
     activeElement.removeClass('warning');
     activeElement.removeClass('success');
     activeElement.toggleClass('danger');
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.tableLeft = function() {
     activeElement.removeClass('center');
     activeElement.removeClass('right');
     activeElement.addClass('left');
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.tableCenter = function() {
     activeElement.removeClass('left');
     activeElement.removeClass('right');
     activeElement.addClass('center');
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
   $.fn.edittable.tableRight = function() {
     activeElement.removeClass('center');
     activeElement.removeClass('left');
     activeElement.addClass('right');
-    $.fn.edittable.save(cmsField);
+    $.fn.edittable.save();
   };
 
 })(jQuery, this);
