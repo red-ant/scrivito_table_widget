@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    scrivito_table_widget (0.5.7.rc1)
+    scrivito_table_widget (0.5.7.rc2)
       bundler
       font-awesome-rails
       scrivito

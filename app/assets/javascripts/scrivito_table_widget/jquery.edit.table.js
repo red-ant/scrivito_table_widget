@@ -11,7 +11,7 @@
 
   $.fn.edittable = function(opts) {
     // initialize
-    if(!initialized) {
+    if(!initialized && !$(this).hasClass('table-responsive')) {
       activeTable = this.parents('table');
       cmsField = this.parents('[data-editor=table-editor]');
 
@@ -45,9 +45,6 @@
     $('body').keyup(function(e) {
       var code = e.keyCode || e.which;
       $.fn.edittable.save();
-      if(initialized) {
-        $.fn.edittable.setButtonPositions();
-      }
     });
     keysBound = true;
   };
@@ -108,7 +105,7 @@
     }
   }
 
-  $.fn.edittable.save = function(cmsField) {
+  $.fn.edittable.save = function() {
     var text = activeTable.get(0).outerHTML;
     $(cmsField).scrivito('save', text);
   }
@@ -124,6 +121,9 @@
 
   $.fn.edittable.buttonsEdit = function() {
     return  $.fn.edittable.button("pencil", "", "edit-the-cell alert-gray") +
+            $.fn.edittable.button("align-left", "", "table-left alert-gray") +
+            $.fn.edittable.button("align-center", "", "table-center alert-gray") +
+            $.fn.edittable.button("align-right", "", "table-right alert-gray") +
             $.fn.edittable.button("crosshairs", "", "add-success alert-success") +
             $.fn.edittable.button("crosshairs", "", "add-info alert-info") +
             $.fn.edittable.button("crosshairs", "", "add-warning alert-warning") +
@@ -176,6 +176,10 @@
     $('.table-widget').find('.hover-table').on('click', function() { $.fn.edittable.tableHover(); });
     $('.table-widget').find('.border-table').on('click', function() { $.fn.edittable.tableBorder(); });
     $('.table-widget').find('.first-column').on('click', function() { $.fn.edittable.firstColumn(); });
+    $('.table-widget').find('.table-left').on('click', function() { $.fn.edittable.tableLeft(); });
+    $('.table-widget').find('.table-center').on('click', function() { $.fn.edittable.tableCenter(); });
+    $('.table-widget').find('.table-right').on('click', function() { $.fn.edittable.tableRight(); });
+
     $('.table-widget').find('.add-success').on('click', function() { $.fn.edittable.addSuccess(); });
     $('.table-widget').find('.add-info').on('click', function() { $.fn.edittable.addInfo(); });
     $('.table-widget').find('.add-warning').on('click', function() { $.fn.edittable.addWarning(); });
