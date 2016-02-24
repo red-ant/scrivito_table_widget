@@ -25,17 +25,26 @@
       $.fn.edittable.bindKeys();
     }
 
+    var elem = this;
+
+    if($(this).get(0).tagName != "TD" && $(this).get(0).tagName != "TH") {
+      elem = elem.parents('td, th');
+    }
+
     // edit
-    if($(this).get(0).tagName == "TD" || $(this).get(0).tagName == "TH") {
-      activeElement = this;
-      cmsField.attr('contenteditable', true);
-      $.fn.edittable.setButtonPositions();
+    if($(elem).get(0) != undefined) {
+      if($(elem).get(0).tagName == "TD" || $(elem).get(0).tagName == "TH") {
+        activeElement = elem;
+        cmsField.attr('contenteditable', true);
+        $.fn.edittable.setButtonPositions();
+      }
     }
   };
 
   $.fn.edittable.bindKeys = function() {
     $('body').keyup(function(e) {
       var code = e.keyCode || e.which;
+      $.fn.edittable.save();
       if(initialized) {
         $.fn.edittable.setButtonPositions();
       }
@@ -115,11 +124,6 @@
 
   $.fn.edittable.buttonsEdit = function() {
     return  $.fn.edittable.button("pencil", "", "edit-the-cell alert-gray") +
-            $.fn.edittable.button("bold", "", "table-bold alert-gray") +
-            $.fn.edittable.button("italic", "", "table-italic alert-gray") +
-            $.fn.edittable.button("align-left", "", "table-left alert-gray") +
-            $.fn.edittable.button("align-center", "", "table-center alert-gray") +
-            $.fn.edittable.button("align-right", "", "table-right alert-gray") +
             $.fn.edittable.button("crosshairs", "", "add-success alert-success") +
             $.fn.edittable.button("crosshairs", "", "add-info alert-info") +
             $.fn.edittable.button("crosshairs", "", "add-warning alert-warning") +
@@ -176,16 +180,12 @@
     $('.table-widget').find('.add-info').on('click', function() { $.fn.edittable.addInfo(); });
     $('.table-widget').find('.add-warning').on('click', function() { $.fn.edittable.addWarning(); });
     $('.table-widget').find('.add-danger').on('click', function() { $.fn.edittable.addDanger(); });
-    $('.table-widget').find('.table-left').on('click', function() { $.fn.edittable.tableLeft(); });
-    $('.table-widget').find('.table-center').on('click', function() { $.fn.edittable.tableCenter(); });
-    $('.table-widget').find('.table-right').on('click', function() { $.fn.edittable.tableRight(); });
 
     $('.table-widget').find('.edit-the-table').on('click', function() { $.fn.edittable.toggleTableOptions('.table-options.main'); });
     $('.table-widget').find('.edit-the-cell').on('click', function() { $.fn.edittable.toggleTableOptions('.table-buttons.edit'); });
 
     $('.table-widget').find('.add-left, .add-right').on('mouseover', function() { $.fn.edittable.addHoverVerticalAdd($(this)); });
     $('.table-widget').find('.add-top, .add-bottom').on('mouseover', function() { $.fn.edittable.addHoverHorizontalAdd($(this)); });
-
 
     $('.table-widget').find('.delete-column').on('mouseover', function() { $.fn.edittable.deleteHoverColumn($(this)); });
     $('.table-widget').find('.delete-row').on('mouseover', function() { $.fn.edittable.deleteHoverRow($(this)); });
@@ -259,18 +259,8 @@
     }
    }
 
-  $.fn.edittable.bold = function() {
-    activeElement.toggleClass('bold');
-    $.fn.edittable.save(cmsField);
-  }
-
-  $.fn.edittable.italic = function() {
-    activeElement.toggleClass('italic');
-    $.fn.edittable.save(cmsField);
-  }
-
   $.fn.edittable.addTop = function() {
-    var newRow = activeElement.parents('tr').get(0).outerHTML;
+    var newRow = "<tr>"+ new Array(cols + 1).join("<td>Content</td>"); +"</tr>";
 
     $(newRow).insertBefore( activeElement.parents('tr') );
     rows += 1;
@@ -281,12 +271,7 @@
   $.fn.edittable.addBottom = function() {
     var newRow = "<tr>"+ new Array(cols + 1).join("<td>Content</td>"); +"</tr>";
 
-    if(activeElement.get(0).tagName == 'TD') {
-      $(newRow).insertAfter( activeElement.parents('tr') );
-    } else {
-      $(newRow).insertBefore( activeTable.find('tbody tr').first() );
-    }
-
+    $(newRow).insertAfter( activeElement.parents('tr') );
     rows += 1;
     $.fn.edittable.setButtonPositions();
     $.fn.edittable.save(cmsField);
