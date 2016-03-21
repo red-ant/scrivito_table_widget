@@ -1,39 +1,30 @@
 (function($, App) {
   'use strict';
 
-  $(function() {
-    App.tableEditor = {
-      // set selector for Editor
-      selector: '[data-editor=table-editor]',
-
-      // set function triggert on click
-      clickFunction: function(cmsField) {
-        cmsField.edittable();
-      },
-
-      blurFunction: function(cmsField) {
-        var response = $.fn.edittable.clear();
-        if(response != undefined) return $(response.cmsField).scrivito('save', response.text);
-      }
-    };
-
-    // Set click event
-    scrivito.on('load', function() {
-      return $('body').on('click', '.table-widget', function(event) {
-        if(scrivito.in_editable_view()) {
-          tableEditor.clickFunction($(event.target));
-        };
+  var table_editor = {
+    can_edit: function(element) {
+      return $(element).is('.scrivito-table-editor');
+    },
+    activate: function(element) {
+      $(element).on('click', function(event) {
+        $(element).edittable(event);
+        scrivito.editors.medium_editor.options = {toolbar: {buttons: ['bold', 'italic', 'scrivito_anchor', 'unorderedlist', 'orderedlist']}};
+        scrivito.editors.medium_editor.activate(element);
         event.stopPropagation();
       });
-    });
 
-    scrivito.on('load', function() {
-      return $('body').on('click', function(event) {
-        if(scrivito.in_editable_view()) {
-          tableEditor.blurFunction($(event.target));
-        };
+      $('body').on('click', function(event) {
+        if(!$(event.target).parents('.table-buttons').length && !$(event.target).parents('.table-options').length) {
+          scrivito.editors.medium_editor.options = {};
+          var response = $.fn.edittable.clear();
+          if(response != undefined) return $(response.cmsField).scrivito('save', response.text);
+        }
       });
-    });
+    }
+  };
+
+  scrivito.on('load', function() {
+    return scrivito.define_editor('toggle_button_editor', table_editor);
   });
 
 })(jQuery, this);

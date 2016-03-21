@@ -1,4 +1,5 @@
 /*
  *= require font-awesome
- *= require_tree ./scrivito_table_widget
+ *= require scrivito_table_widget/application
+ *= require scrivito_table_widget/editing
  */

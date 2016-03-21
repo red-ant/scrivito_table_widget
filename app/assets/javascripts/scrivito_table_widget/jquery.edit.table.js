@@ -9,11 +9,19 @@
   var rows = 0;
   var cols = 0;
 
-  $.fn.edittable = function(opts) {
+  $.fn.edittable = function(event) {
+    var elem = $(event.target);
+
+    // remove and save table if other instanze of table-widget is clicked
+    if(!elem.parents('table').is(activeTable)) {
+      $.fn.edittable.clear();
+      initialized = false;
+    }
+
     // initialize
-    if(!initialized && !$(this).hasClass('table-responsive')) {
-      activeTable = this.parents('table');
-      cmsField = this.parents('[data-editor=table-editor]');
+    if(!initialized) {
+      activeTable = elem.parents('table');
+      cmsField = $(event.target).parents('.scrivito-table-editor');
 
       initialized = $.fn.edittable.initialize(cmsField, this);
       rows = $.fn.edittable.getRowCount();
@@ -25,19 +33,14 @@
       $.fn.edittable.bindKeys();
     }
 
-    var elem = this;
-
-    if($(this).get(0).tagName != "TD" && $(this).get(0).tagName != "TH") {
+    if($(elem).get(0).tagName != "TD" && $(elem).get(0).tagName != "TH") {
       elem = elem.parents('td, th');
     }
 
-    // edit
-    if($(elem).get(0) != undefined) {
-      if($(elem).get(0).tagName == "TD" || $(elem).get(0).tagName == "TH") {
-        activeElement = elem;
-        cmsField.attr('contenteditable', true);
-        $.fn.edittable.setButtonPositions();
-      }
+    activeElement = elem;
+    cmsField.attr('contenteditable', true);
+    if(activeElement) {
+      $.fn.edittable.setButtonPositions();
     }
   };
 
@@ -106,8 +109,10 @@
   }
 
   $.fn.edittable.save = function() {
-    var text = activeTable.get(0).outerHTML;
-    $(cmsField).scrivito('save', text);
+    if(activeTable) {
+      var text = activeTable.get(0).outerHTML;
+      $(cmsField).scrivito('save', text);
+    }
   }
 
   /****
@@ -163,38 +168,38 @@
    ****/
 
   $.fn.edittable.bindButtons = function() {
-    $('.table-widget').find('.add-top').on('click', function() { $.fn.edittable.addTop(); });
-    $('.table-widget').find('.add-bottom').on('click', function() { $.fn.edittable.addBottom(); });
-    $('.table-widget').find('.add-left').on('click', function() { $.fn.edittable.addLeft(); });
-    $('.table-widget').find('.add-right').on('click', function() { $.fn.edittable.addRight(); });
-    $('.table-widget').find('.table-bold').on('click', function() { $.fn.edittable.bold(); });
-    $('.table-widget').find('.table-italic').on('click', function() { $.fn.edittable.italic(); });
-    $('.table-widget').find('.delete-row').on('click', function() { $.fn.edittable.removeRow(); });
-    $('.table-widget').find('.delete-column').on('click', function() { $.fn.edittable.removeColumn(); });
-    $('.table-widget').find('.stripe-table').on('click', function() { $.fn.edittable.tableStriped(); });
-    $('.table-widget').find('.condence-table').on('click', function() { $.fn.edittable.tableCondensed(); });
-    $('.table-widget').find('.hover-table').on('click', function() { $.fn.edittable.tableHover(); });
-    $('.table-widget').find('.border-table').on('click', function() { $.fn.edittable.tableBorder(); });
-    $('.table-widget').find('.first-column').on('click', function() { $.fn.edittable.firstColumn(); });
-    $('.table-widget').find('.table-left').on('click', function() { $.fn.edittable.tableLeft(); });
-    $('.table-widget').find('.table-center').on('click', function() { $.fn.edittable.tableCenter(); });
-    $('.table-widget').find('.table-right').on('click', function() { $.fn.edittable.tableRight(); });
+    $(cmsField).parent().find('.add-top').on('click', function() { $.fn.edittable.addTop(); });
+    $(cmsField).parent().find('.add-bottom').on('click', function() { $.fn.edittable.addBottom(); });
+    $(cmsField).parent().find('.add-left').on('click', function() { $.fn.edittable.addLeft(); });
+    $(cmsField).parent().find('.add-right').on('click', function() { $.fn.edittable.addRight(); });
+    $(cmsField).parent().find('.table-bold').on('click', function() { $.fn.edittable.bold(); });
+    $(cmsField).parent().find('.table-italic').on('click', function() { $.fn.edittable.italic(); });
+    $(cmsField).parent().find('.delete-row').on('click', function() { $.fn.edittable.removeRow(); });
+    $(cmsField).parent().find('.delete-column').on('click', function() { $.fn.edittable.removeColumn(); });
+    $(cmsField).parent().find('.stripe-table').on('click', function() { $.fn.edittable.tableStriped(); });
+    $(cmsField).parent().find('.condence-table').on('click', function() { $.fn.edittable.tableCondensed(); });
+    $(cmsField).parent().find('.hover-table').on('click', function() { $.fn.edittable.tableHover(); });
+    $(cmsField).parent().find('.border-table').on('click', function() { $.fn.edittable.tableBorder(); });
+    $(cmsField).parent().find('.first-column').on('click', function() { $.fn.edittable.firstColumn(); });
+    $(cmsField).parent().find('.table-left').on('click', function() { $.fn.edittable.tableLeft(); });
+    $(cmsField).parent().find('.table-center').on('click', function() { $.fn.edittable.tableCenter(); });
+    $(cmsField).parent().find('.table-right').on('click', function() { $.fn.edittable.tableRight(); });
 
-    $('.table-widget').find('.add-success').on('click', function() { $.fn.edittable.addSuccess(); });
-    $('.table-widget').find('.add-info').on('click', function() { $.fn.edittable.addInfo(); });
-    $('.table-widget').find('.add-warning').on('click', function() { $.fn.edittable.addWarning(); });
-    $('.table-widget').find('.add-danger').on('click', function() { $.fn.edittable.addDanger(); });
+    $(cmsField).parent().find('.add-success').on('click', function() { $.fn.edittable.addSuccess(); });
+    $(cmsField).parent().find('.add-info').on('click', function() { $.fn.edittable.addInfo(); });
+    $(cmsField).parent().find('.add-warning').on('click', function() { $.fn.edittable.addWarning(); });
+    $(cmsField).parent().find('.add-danger').on('click', function() { $.fn.edittable.addDanger(); });
 
-    $('.table-widget').find('.edit-the-table').on('click', function() { $.fn.edittable.toggleTableOptions('.table-options.main'); });
-    $('.table-widget').find('.edit-the-cell').on('click', function() { $.fn.edittable.toggleTableOptions('.table-buttons.edit'); });
+    $(cmsField).parent().find('.edit-the-table').on('click', function() { $.fn.edittable.toggleTableOptions('.table-options.main'); });
+    $(cmsField).parent().find('.edit-the-cell').on('click', function() { $.fn.edittable.toggleTableOptions('.table-buttons.edit'); });
 
-    $('.table-widget').find('.add-left, .add-right').on('mouseover', function() { $.fn.edittable.addHoverVerticalAdd($(this)); });
-    $('.table-widget').find('.add-top, .add-bottom').on('mouseover', function() { $.fn.edittable.addHoverHorizontalAdd($(this)); });
+    $(cmsField).parent().find('.add-left, .add-right').on('mouseover', function() { $.fn.edittable.addHoverVerticalAdd($(this)); });
+    $(cmsField).parent().find('.add-top, .add-bottom').on('mouseover', function() { $.fn.edittable.addHoverHorizontalAdd($(this)); });
 
-    $('.table-widget').find('.delete-column').on('mouseover', function() { $.fn.edittable.deleteHoverColumn($(this)); });
-    $('.table-widget').find('.delete-row').on('mouseover', function() { $.fn.edittable.deleteHoverRow($(this)); });
+    $(cmsField).parent().find('.delete-column').on('mouseover', function() { $.fn.edittable.deleteHoverColumn($(this)); });
+    $(cmsField).parent().find('.delete-row').on('mouseover', function() { $.fn.edittable.deleteHoverRow($(this)); });
 
-    $('.table-widget').find('.add-left, .add-right, .add-top, .add-bottom, .delete-column, .delete-row').on('mouseout', function() { $.fn.edittable.resetHelperLine(); });
+    $(cmsField).parent().find('.add-left, .add-right, .add-top, .add-bottom, .delete-column, .delete-row').on('mouseout', function() { $.fn.edittable.resetHelperLine(); });
   }
 
   /****

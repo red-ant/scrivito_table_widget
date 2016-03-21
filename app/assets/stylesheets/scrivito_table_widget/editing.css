@@ -70,6 +70,7 @@
 
 .table-buttons.top {
   height: 25px;
+  z-index: 111112;
 }
 
 .table-buttons.top .add-left {
@@ -84,6 +85,7 @@
 
 .table-buttons.left {
   width: 25px;
+  z-index: 111112;
 }
 
 .table-buttons.left .add-top {
@@ -107,6 +109,7 @@
 .helper-line {
   position: absolute;
   display: none;
+  z-index: 100000;
 }
 
 .delete-marker td,
