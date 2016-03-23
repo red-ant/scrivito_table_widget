@@ -1,3 +1,3 @@
 module ScrivitoTableWidget
-  VERSION = "0.5.8.rc2"
+  VERSION = "0.6.0"
 end

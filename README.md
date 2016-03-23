@@ -15,3 +15,11 @@ Add this line to your editing JavaScript manifest:
 Add this line to your application stylesheet manifest:
 
     *= require scrivito_table_widget
+
+You have to activate the table editor in your select editor JavaScript:
+
+```js
+scrivito.select_editor(function(element, editor) {
+  editor.use("table_editor");
+});
+```

@@ -1,8 +1,7 @@
 PATH
   remote: .
   specs:
-    scrivito_table_widget (0.5.8.rc2)
-      bundler
+    scrivito_table_widget (0.6.0)
       font-awesome-rails
       scrivito
 
@@ -104,7 +103,7 @@ GEM
       activesupport (= 4.2.5.2)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.4.2)
+    rake (11.1.1)
     scrivito (1.2.0)
       railties
       scrivito_content_browser (= 1.2.0)
@@ -146,7 +145,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rake
   scrivito_table_widget!
 
 BUNDLED WITH
