@@ -16,15 +16,12 @@ Gem::Specification.new do |gem|
   gem.license     = "LGPL-3.0"
 
   gem.files = Dir[
-    "{app,lib,scrivito}/**/*",
+    "{app,lib}/**/*",
     "LICENSE",
     "Rakefile",
     "README.md"
   ]
 
-  gem.add_dependency 'bundler'
   gem.add_dependency 'scrivito'
   gem.add_dependency 'font-awesome-rails'
-
-  gem.add_development_dependency 'rake'
 end
