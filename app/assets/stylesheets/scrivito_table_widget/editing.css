@@ -25,11 +25,12 @@
 }
 
 .table-buttons.edit {
-  width: 245px;
+  width: auto;
+  z-index: 111113;
 }
 
 .table-options.main {
-  width: 350px;
+  width: auto;
 }
 
 .table-buttons.edit div.alert-gray,

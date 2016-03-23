@@ -65,8 +65,8 @@
     var width = activeElement.outerWidth();
     var height = activeElement.outerHeight();
 
-    $('.table-buttons.top').css({    top: "-11px",                        left: (base.left - 11), width: width + 23});
-    $('.table-buttons.edit').css({   top: (base.top - 12),                left: (base.left - 5)});
+    $('.table-buttons.top').css({    top: "-12px",                        left: (base.left - 11), width: width + 23});
+    $('.table-buttons.edit').css({   top: (base.top - 12),                left: (base.left + 6)});
     $('.table-buttons.left').css({   top: (base.top - 12),                left: -17, height: height + 24});
     $('.table-buttons.bottom').css({ bottom: "-4px",                      left: (base.left + width/2 - 12)});
     $('.table-buttons.right').css({  top: (base.top + height/2 - 11),      right: -23});
