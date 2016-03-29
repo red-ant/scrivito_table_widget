@@ -22,7 +22,7 @@
   };
 
   scrivito.on('content', function() {
-    return scrivito.define_editor('toggle_button_editor', table_editor);
+    return scrivito.define_editor('table_editor', table_editor);
   });
 
 })(jQuery, this);
