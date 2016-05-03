@@ -4,8 +4,8 @@ class TableWidget < Widget
   default_for :table do |a,b|
     "<table class='table'>
       <thead>
-        <tr><th>Headline</th><th>Headline</th></tr><
-      /thead>
+        <tr><th>Headline</th><th>Headline</th></tr>
+      </thead>
       <tbody>
         <tr><td>Content</td><td>Content</td></tr>
         <tr><td>Content</td><td>Content</td></tr>
