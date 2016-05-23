@@ -180,8 +180,6 @@
     $(cmsField).parent().find('.add-bottom').on('click', function() { $.fn.edittable.addBottom(); });
     $(cmsField).parent().find('.add-left').on('click', function() { $.fn.edittable.addLeft(); });
     $(cmsField).parent().find('.add-right').on('click', function() { $.fn.edittable.addRight(); });
-    $(cmsField).parent().find('.table-bold').on('click', function() { $.fn.edittable.bold(); });
-    $(cmsField).parent().find('.table-italic').on('click', function() { $.fn.edittable.italic(); });
     $(cmsField).parent().find('.delete-row').on('click', function() { $.fn.edittable.removeRow(); });
     $(cmsField).parent().find('.delete-column').on('click', function() { $.fn.edittable.removeColumn(); });
     $(cmsField).parent().find('.stripe-table').on('click', function() { $.fn.edittable.tableStriped(); });
