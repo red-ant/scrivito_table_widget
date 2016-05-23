@@ -44,6 +44,10 @@
     }
   };
 
+  $.fn.edittable.defaults = {
+    "colorClasses": ['alert-success', 'alert-info', 'alert-warning', 'alert-danger']
+  };
+
   $.fn.edittable.bindKeys = function() {
     $('body').keyup(function(e) {
       var code = e.keyCode || e.which;
@@ -125,14 +129,18 @@
   }
 
   $.fn.edittable.buttonsEdit = function() {
+    var colorButtons = [];
+    $.each($.fn.edittable.defaults.colorClasses, function(index, color) {
+      var button = $($.fn.edittable.button("crosshairs", "", "toggleColor " + color));
+      button.attr('data-current-color', color);
+      colorButtons.push(button.get(0).outerHTML);
+    })
+
     return  $.fn.edittable.button("pencil", "", "edit-the-cell alert-gray") +
             $.fn.edittable.button("align-left", "", "table-left alert-gray") +
             $.fn.edittable.button("align-center", "", "table-center alert-gray") +
             $.fn.edittable.button("align-right", "", "table-right alert-gray") +
-            $.fn.edittable.button("crosshairs", "", "add-success alert-success") +
-            $.fn.edittable.button("crosshairs", "", "add-info alert-info") +
-            $.fn.edittable.button("crosshairs", "", "add-warning alert-warning") +
-            $.fn.edittable.button("crosshairs", "", "add-danger alert-danger");
+            colorButtons.join('');
   }
 
   $.fn.edittable.buttonsBottom = function() {
@@ -185,10 +193,7 @@
     $(cmsField).parent().find('.table-center').on('click', function() { $.fn.edittable.tableCenter(); });
     $(cmsField).parent().find('.table-right').on('click', function() { $.fn.edittable.tableRight(); });
 
-    $(cmsField).parent().find('.add-success').on('click', function() { $.fn.edittable.addSuccess(); });
-    $(cmsField).parent().find('.add-info').on('click', function() { $.fn.edittable.addInfo(); });
-    $(cmsField).parent().find('.add-warning').on('click', function() { $.fn.edittable.addWarning(); });
-    $(cmsField).parent().find('.add-danger').on('click', function() { $.fn.edittable.addDanger(); });
+    $(cmsField).parent().find('.toggleColor').on('click', $.proxy($.fn.edittable.toggleColor, this));
 
     $(cmsField).parent().find('.edit-the-table').on('click', function() { $.fn.edittable.toggleTableOptions('.table-options.main'); });
     $(cmsField).parent().find('.edit-the-cell').on('click', function() { $.fn.edittable.toggleTableOptions('.table-buttons.edit'); });
@@ -377,35 +382,16 @@
     $.fn.edittable.save();
   };
 
-  $.fn.edittable.addSuccess = function() {
-    activeElement.removeClass('info');
-    activeElement.removeClass('warning');
-    activeElement.removeClass('danger');
-    activeElement.toggleClass('success');
-    $.fn.edittable.save();
-  };
+  $.fn.edittable.toggleColor = function(event) {
+    var selectedColor = $(event.currentTarget).data('currentColor');
 
-  $.fn.edittable.addInfo = function() {
-    activeElement.removeClass('success');
-    activeElement.removeClass('warning');
-    activeElement.removeClass('danger');
-    activeElement.toggleClass('info');
-    $.fn.edittable.save();
-  };
+    $.each($.fn.edittable.defaults.colorClasses, function(index, color) {
+      if(color != selectedColor) {
+        activeElement.removeClass(color);
+      };
+    });
 
-  $.fn.edittable.addWarning = function() {
-    activeElement.removeClass('info');
-    activeElement.removeClass('success');
-    activeElement.removeClass('danger');
-    activeElement.toggleClass('warning');
-    $.fn.edittable.save();
-  };
-
-  $.fn.edittable.addDanger = function() {
-    activeElement.removeClass('info');
-    activeElement.removeClass('warning');
-    activeElement.removeClass('success');
-    activeElement.toggleClass('danger');
+    activeElement.toggleClass(selectedColor);
     $.fn.edittable.save();
   };
 
