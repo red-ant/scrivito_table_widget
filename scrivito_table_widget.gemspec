@@ -23,5 +23,5 @@ Gem::Specification.new do |gem|
   ]
 
   gem.add_dependency 'scrivito'
-  gem.add_dependency 'font-awesome-rails'
+  gem.add_dependency 'font-awesome-sass'
 end
