@@ -97,7 +97,7 @@
   }
 
   $.fn.edittable.clear = function() {
-    if(initialized) {
+    if(initialized && activeTable.length > 0) {
       var text = activeTable.get(0).outerHTML;
       var field = cmsField;
       activeTable = null;
@@ -109,6 +109,9 @@
       rows = 0;
       cols = 0;
       return {text: text, cmsField: field};
+    }
+    else {
+      initialized = false;
     }
   }
 
@@ -282,8 +285,15 @@
 
   $.fn.edittable.addBottom = function() {
     var newRow = "<tr>"+ new Array(cols + 1).join("<td>Content</td>"); +"</tr>";
+    var insertPoint;
 
-    $(newRow).insertAfter( activeElement.parents('tr') );
+    if (activeElement.closest('thead').length) {
+      insertPoint = activeTable.find("tbody tr").first();
+    } else {
+      insertPoint = activeElement.parents('tr');
+    }
+
+    $(newRow).insertAfter(insertPoint);
     rows += 1;
     $.fn.edittable.setButtonPositions();
     $.fn.edittable.save();
@@ -293,7 +303,7 @@
     var pos = activeElement.index();
 
     activeTable.find("thead tr").each(function(index, row) {
-      $($(row).find("th")[pos]).before("<th>Head</th>");
+      $($(row).find("th")[pos]).before("<th>Headline</th>");
     });
 
     activeTable.find("tbody tr").each(function(index, row) {
@@ -309,7 +319,7 @@
     var pos = activeElement.index();
 
     activeTable.find("thead tr").each(function(index, row) {
-      $($(row).find("th")[pos]).after("<th>Head</th>");
+      $($(row).find("th")[pos]).after("<th>Headline</th>");
     });
 
     activeTable.find("tbody tr").each(function(index, row) {
