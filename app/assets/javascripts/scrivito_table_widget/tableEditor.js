@@ -9,7 +9,7 @@
       $(element).on('click', function(event) {
         $(element).edittable(event);
         scrivito.editors.medium_editor.activate(element);
-        event.stopPropagation();
+        $(this).unbind('click');
       });
 
       $('body').on('click', function(event) {
