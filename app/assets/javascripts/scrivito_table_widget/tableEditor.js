@@ -12,6 +12,7 @@
         if (!$(this).data('medium-editor-element')) {
           scrivito.editors.medium_editor.activate(element);
         }
+        event.stopPropagation();
       });
 
       $('body').on('click', function(event) {
