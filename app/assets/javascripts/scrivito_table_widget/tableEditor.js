@@ -8,7 +8,10 @@
     activate: function(element) {
       $(element).on('click', function(event) {
         $(element).edittable(event);
-        scrivito.editors.medium_editor.activate(element);
+
+        if (!$(this).data('medium-editor-element')) {
+          scrivito.editors.medium_editor.activate(element);
+        }
         event.stopPropagation();
       });
 
