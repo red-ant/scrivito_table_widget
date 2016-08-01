@@ -25,7 +25,9 @@
   };
 
   scrivito.on('content', function() {
-    return scrivito.define_editor('table_editor', table_editor);
+    if (scrivito.in_editable_view()) {
+      scrivito.define_editor('table_editor', table_editor);
+    }
   });
 
 })(jQuery, this);
